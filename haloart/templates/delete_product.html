@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+<!-- Начало блока контента -->
+{% block content %}
+
+<div class="container delete_container">
+	<form method="post" class="item__form mb-4" novalidate>
+		{% csrf_token %}
+		<h3 class="m-4">{{ title }}</h3>
+		<p>Вы уверены, что хотите удалить продукт?</p>
+
+		<p class="form-buttons">
+			<input type="submit" class="btn btn-primary" value="Удалить">
+			<a href="{% url 'main_page' %}" class="btn btn-outline">Отмена</a>
+		</p>
+	</form>
+</div>
+
+{% endblock %}
+<!-- Конец блока контента -->

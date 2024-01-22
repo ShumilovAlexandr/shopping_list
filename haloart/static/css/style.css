@@ -1,0 +1,20 @@
+img.img-article-left.thumb {
+	max-width: 100px;
+}
+
+.filter__label {
+	font-family: 'Montserrat';
+	font-size: 18px;
+}
+
+.select_obj {
+	width: 250px;
+	font-size: 16px;
+	border-radius: 5px;
+	height: 30px;
+	border-color: #B5B8B1;
+	border-width: thin;
+}
+
+
+

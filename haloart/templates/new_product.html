@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+  <h3 class="m-4">{{ title }}</h3>
+  <form method="post"
+        enctype="multipart/form-data"
+        id="form_product"
+        class="item__form mb-4" novalidate>
+    {% csrf_token %}
+    <div class="ms-4 mx-4">
+      <div class="mb-4">
+        {{ form.as_p }}
+      </div>
+
+    </div>
+    <button type="submit" class="btn btn-primary ms-4"
+            >Сохранить продукт</button>
+    <a href="/"
+          class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover ms-5">
+      Вернуться к списку продуктов.</a>
+  </form>
+
+{% endblock %}

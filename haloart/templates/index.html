@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+<!-- Начало блока контента -->
+{% block content %}
+
+<!--Добавляю фильтрацию-->
+  <form method="get" class="mt-4 ms-4">
+    <label for="object_sort" class="filter__label">Сортировка: </label>
+    <select name="object_sort" class="filter__label select_obj">
+      <option>Название</option>
+      <option>Цена</option>
+      <option>Количество</option>
+      <option>Дата добавления</option>
+    </select>
+
+    <label for="name_filter" class="filter__label ms-4">Фильтр по названию:
+    </label>
+    <input type="text" name="name_filter" class="filter__label select_obj">
+
+    <button type="submit" class="btn btn-primary ms-4 mx-4">Применить</button>
+  </form>
+
+  <h3 class="m-4">{{ title }}</h3>
+  <div class="ms-4 mx-4 mb-4">
+    <table class="table">
+      <thead class="table-light">
+        <tr>
+          <th scope="col">Название</th>
+          <th scope="col">Изображение</th>
+          <th scope="col">Описание</th>
+          <th scope="col">Цена</th>
+          <th scope="col">Количество</th>
+          <th scope="col">Дата добавления</th>
+          <th scope="col">Изменить продукт</th>
+          <th scope="col">Удалить продукт</th>
+        </tr>
+      </thead>
+      <tbody class="product_table_body">
+
+        {% for i in instance %}
+        <tr>
+          <td class="filter">{{ i.name }}</td>
+          <td class="filter"><img class="img-article-left thumb"
+                  src="{{ i.image.url }}" alt=""></td>
+          <td>{{ i.description }}</td>
+          <td>{{ i.price }}</td>
+          <td>{{ i.quantity }}</td>
+          <td>{{ i.created }}</td>
+          <td><a href="{% url 'edit_product' i.pk %}" style="text-decoration: none;">
+            Редактировать продукт</a></td>
+          <td><a href="{% url 'delete_product' i.pk %}" style="text-decoration: none;">
+            Удалить продукт</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary"
+            onclick="window.location.href='new_product/';">Добавить
+      продукт</button>
+  </div>
+
+{% endblock %}
+<!-- Конец блока контента -->
